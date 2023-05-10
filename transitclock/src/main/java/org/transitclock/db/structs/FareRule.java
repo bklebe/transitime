@@ -212,7 +212,7 @@ public class FareRule implements Serializable {
     // With respect to the database, routeId cannot be null since
     // it is a primary key. But sometimes it won't be set. For this case
     // should return null instead of empty string for consistency.
-    return routeId.length() == 0 ? null : routeId;
+    return routeId.isEmpty() ? null : routeId;
   }
 
   /**
@@ -222,7 +222,7 @@ public class FareRule implements Serializable {
     // With respect to the database, originId cannot be null since
     // it is a primary key. But sometimes it won't be set. For this case
     // should return null instead of empty string for consistency.
-    return originId.length() == 0 ? null : originId;
+    return originId.isEmpty() ? null : originId;
   }
 
   /**
@@ -232,7 +232,7 @@ public class FareRule implements Serializable {
     // With respect to the database, destinationId cannot be null since
     // it is a primary key. But sometimes it won't be set. For this case
     // should return null instead of empty string for consistency.
-    return destinationId.length() == 0 ? null : destinationId;
+    return destinationId.isEmpty() ? null : destinationId;
   }
 
   /**
@@ -242,6 +242,6 @@ public class FareRule implements Serializable {
     // With respect to the database, containsId cannot be null since
     // it is a primary key. But sometimes it won't be set. For this case
     // should return null instead of empty string for consistency.
-    return containsId.length() == 0 ? null : containsId;
+    return containsId.isEmpty() ? null : containsId;
   }
 }

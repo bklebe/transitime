@@ -196,7 +196,7 @@ public class TransitimeQuickStart implements Runnable {
       // uses default if nothing entered
 
       // only set the paramater for realtimeURLfeed if specified by user
-      if (!realtimefeedURL.equals("")) {
+      if (!realtimefeedURL.isEmpty()) {
         System.getProperties().setProperty("transitclock.avl.url", realtimefeedURL);
       }
 

@@ -113,7 +113,7 @@ public class PredictabilityMonitor extends MonitorBase {
       predictableVehicleCount += vehicleIdsForBlock.size();
 
       // Keep track of active blocks without vehicles
-      if (vehicleIdsForBlock.size() == 0) activeBlocksWithoutVehicle.add(block);
+      if (vehicleIdsForBlock.isEmpty()) activeBlocksWithoutVehicle.add(block);
     }
 
     // Determine fraction of active blocks that have a predictable vehicle

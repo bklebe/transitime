@@ -508,7 +508,7 @@ public class AvlReport implements Serializable {
 
     // Make sure vehicleId is set
     if (vehicleId == null) errorMsg += "VehicleId is null. ";
-    else if (vehicleId.length() == 0) errorMsg += "VehicleId is empty string. ";
+    else if (vehicleId.isEmpty()) errorMsg += "VehicleId is empty string. ";
 
     // Make sure GPS time is OK
     long currentTime = System.currentTimeMillis();

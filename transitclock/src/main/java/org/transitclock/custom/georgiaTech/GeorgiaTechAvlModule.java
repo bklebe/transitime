@@ -111,7 +111,7 @@ public class GeorgiaTechAvlModule extends AvlModule {
     String assignmentId = null;
     while (!(input = readLine(reader)).isEmpty()) {
       // Determine the type of parameter
-      int equals = input.indexOf("=");
+      int equals = input.indexOf('=');
       String paramterName = input.substring(0, equals);
       String value = input.substring(equals + 1);
 

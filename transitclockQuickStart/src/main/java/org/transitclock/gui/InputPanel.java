@@ -211,7 +211,7 @@ public class InputPanel extends JFrame {
             // reads in URL
             loglocation = textField_2.getText();
             realtimefeedURL = textField_1.getText();
-            if (loglocation.equals("")) {
+            if (loglocation.isEmpty()) {
               // uses current directory if one none specified by user.
               loglocation = System.getProperty("user.dir");
             }

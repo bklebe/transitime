@@ -170,7 +170,7 @@ public class ScheduleStatistics {
     }
 
     // If no data points left due to filtering then simply return null
-    if (filteredTimesFromDb.size() == 0) return null;
+    if (filteredTimesFromDb.isEmpty()) return null;
 
     // If filtered out any times then need to update timesArray and the mean
     if (timeFilteredOut) {

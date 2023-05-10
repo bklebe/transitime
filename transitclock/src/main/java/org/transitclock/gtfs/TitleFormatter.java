@@ -224,7 +224,7 @@ public class TitleFormatter {
    */
   private static String capitalize(String str, char[] delimiters) {
     int delimLen = (delimiters == null ? -1 : delimiters.length);
-    if (str == null || str.length() == 0 || delimLen == 0) {
+    if (str == null || str.isEmpty() || delimLen == 0) {
       return str;
     }
 

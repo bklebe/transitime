@@ -95,6 +95,7 @@
           </formats>
           <!-- define a language-specific format -->
           <java>
+            <cleanthat/>
             <googleJavaFormat/>
             <!-- has its own section below -->
             <importOrder/>

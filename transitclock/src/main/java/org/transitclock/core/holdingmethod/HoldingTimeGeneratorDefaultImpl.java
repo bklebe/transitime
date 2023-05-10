@@ -334,7 +334,7 @@ public class HoldingTimeGeneratorDefaultImpl implements HoldingTimeGenerator {
       ordered = new ArrayList<String>();
 
       while (((count + 1) > 0) && unordered.size() > 0) {
-        if (ordered.size() == 0) {
+        if (ordered.isEmpty()) {
           String first = unordered.get(0).getVehicleId();
           String second = unordered.get(0).getHeadway().getOtherVehicleId();
 

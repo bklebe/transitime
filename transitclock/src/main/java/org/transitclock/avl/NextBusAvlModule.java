@@ -207,7 +207,7 @@ public class NextBusAvlModule extends XmlPollingAvlModule {
       // Get driver ID. Be consistent about using null if not set
       // instead of empty string
       String driverId = vehicle.getAttributeValue("driverId");
-      if (driverId != null && driverId.length() == 0) driverId = null;
+      if (driverId != null && driverId.isEmpty()) driverId = null;
 
       // Get passenger count
       Integer passengerCount = null;

@@ -451,11 +451,11 @@ public class Time {
     boolean negative = timeStr.charAt(0) == '-';
     String positiveTimeStr = negative ? timeStr.substring(1) : timeStr;
 
-    int firstColon = positiveTimeStr.indexOf(":");
+    int firstColon = positiveTimeStr.indexOf(':');
     int hours = Integer.parseInt(positiveTimeStr.substring(0, firstColon));
 
     // If there is a second colon then also process seconds
-    int secondColon = positiveTimeStr.lastIndexOf(":");
+    int secondColon = positiveTimeStr.lastIndexOf(':');
     int minutes, seconds;
     if (firstColon != secondColon) {
       // Second colon, so handle minutes and seconds
