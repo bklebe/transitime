@@ -37,4 +37,24 @@
             </modules>
         </profile>
     </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>au.com.acegi</groupId>
+                <artifactId>xml-format-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <id>xml-format</id>
+                        <goals>
+                            <goal>xml-format</goal>
+                        </goals>
+                        <configuration>
+                            <indentSize>2</indentSize>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
