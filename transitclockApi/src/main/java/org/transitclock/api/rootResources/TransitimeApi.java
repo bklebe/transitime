@@ -94,9 +94,6 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.servers.ServerVariable;
 import io.swagger.v3.oas.annotations.servers.Servers;
 
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-
 import org.transitclock.ipc.interfaces.PredictionsInterface.RouteStop;
 
 
