@@ -274,12 +274,6 @@
       <artifactId>cloudwatchlogbackappender</artifactId>
       <version>1.11</version>
     </dependency>
-    <!-- OLS regression algorithm -->
-    <dependency>
-      <groupId>com.github.haifengl</groupId>
-      <artifactId>smile-core</artifactId>
-      <version>1.5.1</version>
-    </dependency>
     <!-- https://mvnrepository.com/artifact/net.spy/spymemcached -->
     <dependency>
       <groupId>net.spy</groupId>
