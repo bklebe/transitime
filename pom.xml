@@ -6,9 +6,7 @@
   <version>2.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>transitclock</name>
-  
   <url>http://www.transitclock.org//</url>
-
   <modules>
     <module>transitclock</module>
     <module>transitclockApi</module>
@@ -17,44 +15,45 @@
     <module>transitclockTraccarClient</module>
     <module>transitclockBarefootClient</module>
   </modules>
-    <profiles>
-        <profile>
-            <id>skip-integration-tests</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>include-integration-tests</id>
-            <modules>
-                <module>transitclockIntegration</module>
-                <module>transitclock</module>
-                <module>transitclockApi</module>
-              	<module>transitclockWebapp</module>
- 		<module>transitclockQuickStart</module>
- 		<module>transitclockTraccarClient</module>
- 		<module>transitclockBarefootClient</module>
-            </modules>
-        </profile>
-    </profiles>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>au.com.acegi</groupId>
-                <artifactId>xml-format-maven-plugin</artifactId>
-                <version>3.2.2</version>
-                <executions>
-                    <execution>
-                        <id>xml-format</id>
-                        <goals>
-                            <goal>xml-format</goal>
-                        </goals>
-                        <configuration>
-                            <indentSize>2</indentSize>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+  <profiles>
+    <profile>
+      <id>skip-integration-tests</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>include-integration-tests</id>
+      <modules>
+        <module>transitclockIntegration</module>
+        <module>transitclock</module>
+        <module>transitclockApi</module>
+        <module>transitclockWebapp</module>
+        <module>transitclockQuickStart</module>
+        <module>transitclockTraccarClient</module>
+        <module>transitclockBarefootClient</module>
+      </modules>
+    </profile>
+  </profiles>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>au.com.acegi</groupId>
+        <artifactId>xml-format-maven-plugin</artifactId>
+        <version>3.2.2</version>
+        <executions>
+          <execution>
+            <id>xml-format</id>
+            <goals>
+              <goal>xml-format</goal>
+            </goals>
+            <configuration>
+              <excludes>.run/</excludes>
+              <indentSize>2</indentSize>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
