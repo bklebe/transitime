@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,19 +22,18 @@ import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WebLoggingFilter implements Filter {
-  
-  private static final Logger logger = LoggerFactory
-      .getLogger(WebLoggingFilter.class);
+
+  private static final Logger logger = LoggerFactory.getLogger(WebLoggingFilter.class);
+
   @Override
   public void init(FilterConfig filterConfg) {
     logger.info("WebLoggingFilter init");
   }
-  
+
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) {
     try {
@@ -44,7 +43,7 @@ public class WebLoggingFilter implements Filter {
       throw new RuntimeException(ex);
     }
   }
-  
+
   @Override
   public void destroy() {
     logger.info("WebLoggingFilter destroy");

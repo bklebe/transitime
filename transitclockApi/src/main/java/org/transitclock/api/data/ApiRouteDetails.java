@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import org.transitclock.db.structs.Location;
 import org.transitclock.ipc.data.IpcDirection;
 import org.transitclock.ipc.data.IpcDirectionsForRoute;
@@ -33,80 +32,66 @@ import org.transitclock.ipc.data.IpcShape;
  * Provides detailed information for a route include stops and shape info.
  *
  * @author SkiBu Smith
- *
  */
 @XmlRootElement(name = "route")
 public class ApiRouteDetails {
 
-	@XmlAttribute
-	private String id;
+  @XmlAttribute private String id;
 
-	@XmlAttribute
-	private String name;
+  @XmlAttribute private String name;
 
-	@XmlAttribute
-	private String shortName;
+  @XmlAttribute private String shortName;
 
-	@XmlAttribute
-	private String longName;
-	
-	@XmlAttribute
-	private String color;
+  @XmlAttribute private String longName;
 
-	@XmlAttribute
-	private String textColor;
+  @XmlAttribute private String color;
 
-	@XmlAttribute
-	private String type;
+  @XmlAttribute private String textColor;
 
-	@XmlElement(name = "direction")
-	private List<ApiDirection> directions;
+  @XmlAttribute private String type;
 
-	@XmlElement(name = "shape")
-	private List<ApiShape> shapes;
+  @XmlElement(name = "direction")
+  private List<ApiDirection> directions;
 
-	@XmlElement
-	private ApiExtent extent;
+  @XmlElement(name = "shape")
+  private List<ApiShape> shapes;
 
-	@XmlElement
-	private ApiLocation locationOfNextPredictedVehicle;
+  @XmlElement private ApiExtent extent;
 
-	/********************** Member Functions **************************/
+  @XmlElement private ApiLocation locationOfNextPredictedVehicle;
 
-    /**
-     * Need a no-arg constructor for Jersey. Otherwise get really obtuse
-     * "MessageBodyWriter not found for media type=application/json" exception.
-     */
-	protected ApiRouteDetails() {
-	}
+  /********************** Member Functions **************************/
 
-	public ApiRouteDetails(IpcRoute ipcRoute) {
-		this.id = ipcRoute.getId();
-		this.name = ipcRoute.getName();
-		this.shortName = ipcRoute.getShortName();
-		this.longName = ipcRoute.getLongName();
-		this.color = ipcRoute.getColor();
-		this.textColor = ipcRoute.getTextColor();
-		this.type = ipcRoute.getType();
+  /**
+   * Need a no-arg constructor for Jersey. Otherwise get really obtuse "MessageBodyWriter not found
+   * for media type=application/json" exception.
+   */
+  protected ApiRouteDetails() {}
 
-		IpcDirectionsForRoute stops = ipcRoute.getStops();
-		this.directions = new ArrayList<ApiDirection>();
-		for (IpcDirection ipcDirection : stops.getDirections()) {
-			this.directions.add(new ApiDirection(ipcDirection));
-		}
+  public ApiRouteDetails(IpcRoute ipcRoute) {
+    this.id = ipcRoute.getId();
+    this.name = ipcRoute.getName();
+    this.shortName = ipcRoute.getShortName();
+    this.longName = ipcRoute.getLongName();
+    this.color = ipcRoute.getColor();
+    this.textColor = ipcRoute.getTextColor();
+    this.type = ipcRoute.getType();
 
-		this.shapes = new ArrayList<ApiShape>();
-		for (IpcShape shape : ipcRoute.getShapes()) {
-			this.shapes.add(new ApiShape(shape));
-		}
+    IpcDirectionsForRoute stops = ipcRoute.getStops();
+    this.directions = new ArrayList<ApiDirection>();
+    for (IpcDirection ipcDirection : stops.getDirections()) {
+      this.directions.add(new ApiDirection(ipcDirection));
+    }
 
-		this.extent = new ApiExtent(ipcRoute.getExtent());
+    this.shapes = new ArrayList<ApiShape>();
+    for (IpcShape shape : ipcRoute.getShapes()) {
+      this.shapes.add(new ApiShape(shape));
+    }
 
-		Location vehicleLoc = ipcRoute.getLocationOfNextPredictedVehicle();
-		if (vehicleLoc == null)
-			this.locationOfNextPredictedVehicle = null;
-		else
-			this.locationOfNextPredictedVehicle = new ApiLocation(vehicleLoc);
-	}
+    this.extent = new ApiExtent(ipcRoute.getExtent());
 
+    Location vehicleLoc = ipcRoute.getLocationOfNextPredictedVehicle();
+    if (vehicleLoc == null) this.locationOfNextPredictedVehicle = null;
+    else this.locationOfNextPredictedVehicle = new ApiLocation(vehicleLoc);
+  }
 }

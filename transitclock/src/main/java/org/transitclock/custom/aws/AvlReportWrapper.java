@@ -9,8 +9,13 @@ public class AvlReportWrapper {
   private Long _sqsLatency = null;
   private Long _forwarderProcessingLatency = null;
   private Long _forwarderSendLatency = null;
-  
-  public AvlReportWrapper(AvlReport report, Long avlLatency, Long forwarderProcessingLatency, Long sqsLatency, Long totalLatency) {
+
+  public AvlReportWrapper(
+      AvlReport report,
+      Long avlLatency,
+      Long forwarderProcessingLatency,
+      Long sqsLatency,
+      Long totalLatency) {
     _report = report;
     _avlLatency = avlLatency;
     _sqsLatency = sqsLatency;
@@ -20,27 +25,27 @@ public class AvlReportWrapper {
       _forwarderSendLatency = sqsLatency - forwarderProcessingLatency;
     }
   }
-  
+
   public AvlReport getReport() {
     return _report;
   }
-  
+
   public Long getTotalLatency() {
     return _totalLatency;
   }
-  
+
   public Long getAvlLatency() {
     return _avlLatency;
   }
-  
+
   public Long getSqsLatency() {
     return _sqsLatency;
   }
-  
+
   public Long getForwarderProcessingLatency() {
     return _forwarderProcessingLatency;
   }
-  
+
   public Long getForwarderSendLatency() {
     return _forwarderSendLatency;
   }

@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,7 +18,6 @@
 package org.transitclock.gtfs.readers;
 
 import java.text.ParseException;
-
 import org.apache.commons.csv.CSVRecord;
 import org.transitclock.gtfs.gtfsStructs.GtfsTrip;
 import org.transitclock.utils.csv.CsvBaseReader;
@@ -27,18 +26,15 @@ import org.transitclock.utils.csv.CsvBaseReader;
  * GTFS reader for supplemental trips.txt file
  *
  * @author SkiBu Smith
- *
  */
 public class GtfsTripsSupplementReader extends CsvBaseReader<GtfsTrip> {
 
-	public GtfsTripsSupplementReader(String dirName) {
-		super(dirName, "trips.txt", false, true);
-	}
-	
-	@Override
-	public GtfsTrip handleRecord(CSVRecord record, boolean supplemental) 
-			throws ParseException {
-		return new GtfsTrip(record, supplemental, getFileName());
-	}
+  public GtfsTripsSupplementReader(String dirName) {
+    super(dirName, "trips.txt", false, true);
+  }
 
+  @Override
+  public GtfsTrip handleRecord(CSVRecord record, boolean supplemental) throws ParseException {
+    return new GtfsTrip(record, supplemental, getFileName());
+  }
 }

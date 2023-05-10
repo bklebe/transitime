@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,25 +19,22 @@ package org.transitclock.api.data;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="acknowledgment")
+@XmlRootElement(name = "acknowledgment")
 public class ApiCommandAck {
-	@XmlAttribute
-	private boolean success;
-	
-	@XmlAttribute
-	private String message;
-	
-    /********************** Member Functions **************************/
+  @XmlAttribute private boolean success;
 
-    /**
-     * Need a no-arg constructor for Jersey. Otherwise get really 
-     * obtuse "MessageBodyWriter not found for media type=application/json"
-     * exception.
-     */
-    public ApiCommandAck() {}
+  @XmlAttribute private String message;
 
-    public ApiCommandAck(boolean success, String message) {
-    	this.success = success;
-    	this.message = message;
-    }
+  /********************** Member Functions **************************/
+
+  /**
+   * Need a no-arg constructor for Jersey. Otherwise get really obtuse "MessageBodyWriter not found
+   * for media type=application/json" exception.
+   */
+  public ApiCommandAck() {}
+
+  public ApiCommandAck(boolean success, String message) {
+    this.success = success;
+    this.message = message;
+  }
 }

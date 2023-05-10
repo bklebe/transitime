@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,70 +18,74 @@
 package org.transitclock.ipc.data;
 
 import java.io.Serializable;
-
 import org.transitclock.db.structs.VehicleConfig;
 
 /**
- * For transmitting via Interprocess Communication vehicle configuration info. 
+ * For transmitting via Interprocess Communication vehicle configuration info.
  *
  * @author SkiBu Smith
- *
  */
 public class IpcVehicleConfig implements Serializable {
 
-	private final String id;
-	private final Integer type;
-	private final String description;
-	private final Integer capacity;
-	private final Integer crushCapacity;
-	private final Boolean nonPassengerVehicle;
+  private final String id;
+  private final Integer type;
+  private final String description;
+  private final Integer capacity;
+  private final Integer crushCapacity;
+  private final Boolean nonPassengerVehicle;
 
-	private static final long serialVersionUID = 4172266751162647909L;
-	
-	/********************** Member Functions **************************/
+  private static final long serialVersionUID = 4172266751162647909L;
 
-	public IpcVehicleConfig(VehicleConfig vc) {
-		this.id = vc.getId();
-		this.type = vc.getType();
-		this.description = vc.getDescription();
-		this.capacity = vc.getCapacity();
-		this.crushCapacity = vc.getCrushCapacity();
-		this.nonPassengerVehicle = vc.isNonPassengerVehicle();
-	}
+  /********************** Member Functions **************************/
 
-	public String getId() {
-		return id;
-	}
+  public IpcVehicleConfig(VehicleConfig vc) {
+    this.id = vc.getId();
+    this.type = vc.getType();
+    this.description = vc.getDescription();
+    this.capacity = vc.getCapacity();
+    this.crushCapacity = vc.getCrushCapacity();
+    this.nonPassengerVehicle = vc.isNonPassengerVehicle();
+  }
 
-	public Integer getType() {
-		return type;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public Integer getType() {
+    return type;
+  }
 
-	public Integer getCapacity() {
-		return capacity;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public Integer getCrushCapacity() {
-		return crushCapacity;
-	}
+  public Integer getCapacity() {
+    return capacity;
+  }
 
-	public Boolean isNonPassengerVehicle() {
-		return nonPassengerVehicle;
-	}
+  public Integer getCrushCapacity() {
+    return crushCapacity;
+  }
 
-	@Override
-	public String toString() {
-		return "IpcVehicleConfig [" 
-				+ "id=" + id 
-				+ ", type=" + type
-				+ ", description=" + description 
-				+ ", capacity=" + capacity
-				+ ", crushCapacity=" + crushCapacity 
-				+ ", nonPassengerVehicle="	+ nonPassengerVehicle 
-				+ "]";
-	}
+  public Boolean isNonPassengerVehicle() {
+    return nonPassengerVehicle;
+  }
+
+  @Override
+  public String toString() {
+    return "IpcVehicleConfig ["
+        + "id="
+        + id
+        + ", type="
+        + type
+        + ", description="
+        + description
+        + ", capacity="
+        + capacity
+        + ", crushCapacity="
+        + crushCapacity
+        + ", nonPassengerVehicle="
+        + nonPassengerVehicle
+        + "]";
+  }
 }

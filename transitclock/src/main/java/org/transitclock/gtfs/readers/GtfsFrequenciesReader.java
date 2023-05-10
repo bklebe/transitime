@@ -1,6 +1,6 @@
-/* 
+/*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,7 +17,6 @@
 package org.transitclock.gtfs.readers;
 
 import java.text.ParseException;
-
 import org.apache.commons.csv.CSVRecord;
 import org.transitclock.gtfs.GtfsData;
 import org.transitclock.gtfs.gtfsStructs.GtfsFrequency;
@@ -25,23 +24,19 @@ import org.transitclock.utils.csv.CsvBaseReader;
 
 /**
  * GTFS reader for the frequencies.txt file
- * @author SkiBu Smith
  *
+ * @author SkiBu Smith
  */
 public class GtfsFrequenciesReader extends CsvBaseReader<GtfsFrequency> {
 
-	public GtfsFrequenciesReader(String dirName) {
-		super(dirName, "frequencies.txt", false, false);
-	}
-	
-	@Override
-	public GtfsFrequency handleRecord(CSVRecord record, boolean supplemental) 
-			throws ParseException {
-		if (GtfsData.tripNotFiltered(record.get("trip_id")) )
-			return new GtfsFrequency(record, supplemental, getFileName());
-		else
-			return null;
-	}
+  public GtfsFrequenciesReader(String dirName) {
+    super(dirName, "frequencies.txt", false, false);
+  }
 
-
+  @Override
+  public GtfsFrequency handleRecord(CSVRecord record, boolean supplemental) throws ParseException {
+    if (GtfsData.tripNotFiltered(record.get("trip_id")))
+      return new GtfsFrequency(record, supplemental, getFileName());
+    else return null;
+  }
 }

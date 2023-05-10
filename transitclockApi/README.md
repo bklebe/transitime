@@ -1,12 +1,12 @@
 This is the a REST service which provides the information required to run a web application or mobile application based on TheTransitClock.
 
-This can be built on its own by 
+This can be built on its own by
 ```
 cd transitclockApi
 mvn install
 ```
 
-This will produce a api.war file which can be deployed on Tomcat. 
+This will produce a api.war file which can be deployed on Tomcat.
 
 You will need to configure the location of the transitclockConfig.xml file as a command line argument:
 

@@ -29,12 +29,11 @@ package org.transitclock.quickstart.resource;
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
-
-import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.*;
@@ -44,113 +43,111 @@ import javax.swing.filechooser.*;
  *   images/Open16.gif
  *   images/Save16.gif
  */
-public class FileBrowser extends JPanel
-                             implements ActionListener {
-    static private final String newline = "\n";
-    JButton openButton;
-    JTextArea log;
-    JFileChooser fc;
-   private String pickedfile=null;
-    public FileBrowser() {
-        super(new BorderLayout());
+public class FileBrowser extends JPanel implements ActionListener {
+  private static final String newline = "\n";
+  JButton openButton;
+  JTextArea log;
+  JFileChooser fc;
+  private String pickedfile = null;
 
-        //Create the log first, because the action listeners
-        //need to refer to it.
-        log = new JTextArea(10,30);
-        log.setMargin(new Insets(5,5,5,5));
-        log.setEditable(false);
-        JScrollPane logScrollPane = new JScrollPane(log);
+  public FileBrowser() {
+    super(new BorderLayout());
 
-        //Create a file chooser
-        fc = new JFileChooser();
+    // Create the log first, because the action listeners
+    // need to refer to it.
+    log = new JTextArea(10, 30);
+    log.setMargin(new Insets(5, 5, 5, 5));
+    log.setEditable(false);
+    JScrollPane logScrollPane = new JScrollPane(log);
 
-        //Uncomment one of the following lines to try a different
-        //file selection mode.  The first allows just directories
-        //to be selected (and, at least in the Java look and feel,
-        //shown).  The second allows both files and directories
-        //to be selected.  If you leave these lines commented out,
-        //then the default mode (FILES_ONLY) will be used.
-        //
-        //fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+    // Create a file chooser
+    fc = new JFileChooser();
 
-        //Create the open button.  We use the image from the JLF
-        //Graphics Repository (but we extracted it from the jar).
-        openButton = new JButton("Open a file....",
-                                 createImageIcon(""));
-        openButton.addActionListener(this);
-        
+    // Uncomment one of the following lines to try a different
+    // file selection mode.  The first allows just directories
+    // to be selected (and, at least in the Java look and feel,
+    // shown).  The second allows both files and directories
+    // to be selected.  If you leave these lines commented out,
+    // then the default mode (FILES_ONLY) will be used.
+    //
+    // fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-        //For layout purposes, put the buttons in a separate panel
-        JPanel buttonPanel = new JPanel(); //use FlowLayout
-        buttonPanel.add(openButton);
+    // Create the open button.  We use the image from the JLF
+    // Graphics Repository (but we extracted it from the jar).
+    openButton = new JButton("Open a file....", createImageIcon(""));
+    openButton.addActionListener(this);
 
-        //Add the buttons and the log to this panel.
-        add(buttonPanel, BorderLayout.PAGE_START);
-        add(logScrollPane, BorderLayout.CENTER);
+    // For layout purposes, put the buttons in a separate panel
+    JPanel buttonPanel = new JPanel(); // use FlowLayout
+    buttonPanel.add(openButton);
+
+    // Add the buttons and the log to this panel.
+    add(buttonPanel, BorderLayout.PAGE_START);
+    add(logScrollPane, BorderLayout.CENTER);
+  }
+
+  public void actionPerformed(ActionEvent e) {
+
+    // Handle open button action.
+    if (e.getSource() == openButton) {
+      int returnVal = fc.showOpenDialog(FileBrowser.this);
+
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = fc.getSelectedFile();
+        pickedfile = file.getPath();
+        System.out.println("test");
+        log.append("Opening: " + file.getName() + "." + newline);
+      } else {
+        log.append("Open command cancelled by user." + newline);
+      }
+      log.setCaretPosition(log.getDocument().getLength());
+
+      // Handle save button action.
+    } else {
+      log.append("Save command cancelled by user." + newline);
     }
+    log.setCaretPosition(log.getDocument().getLength());
+  }
 
-    public void actionPerformed(ActionEvent e) {
-
-        //Handle open button action.
-        if (e.getSource() == openButton) {
-            int returnVal = fc.showOpenDialog(FileBrowser.this);
-
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                pickedfile=file.getPath();
-                System.out.println("test");
-                log.append("Opening: " + file.getName() + "." + newline);
-            } else {
-                log.append("Open command cancelled by user." + newline);
-            }
-            log.setCaretPosition(log.getDocument().getLength());
-
-        //Handle save button action.
-        } else {
-                log.append("Save command cancelled by user." + newline);
-            }
-            log.setCaretPosition(log.getDocument().getLength());
-        }
-    
-
-    /** Returns an ImageIcon, or null if the path was invalid. */
-    protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = FileBrowser.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
+  /** Returns an ImageIcon, or null if the path was invalid. */
+  protected static ImageIcon createImageIcon(String path) {
+    java.net.URL imgURL = FileBrowser.class.getResource(path);
+    if (imgURL != null) {
+      return new ImageIcon(imgURL);
+    } else {
+      System.err.println("Couldn't find file: " + path);
+      return null;
     }
+  }
 
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event dispatch thread.
-     */
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("FileChooserDemo");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  /**
+   * Create the GUI and show it. For thread safety, this method should be invoked from the event
+   * dispatch thread.
+   */
+  private static void createAndShowGUI() {
+    // Create and set up the window.
+    JFrame frame = new JFrame("FileChooserDemo");
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        //Add content to the window.
-        frame.getContentPane().add(new FileBrowser());
+    // Add content to the window.
+    frame.getContentPane().add(new FileBrowser());
 
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
-    }
-    public void fileBrowser() {
-        //Schedule a job for the event dispatch thread:
-        //creating and showing this application's GUI.
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                //Turn off metal's use of bold fonts
-                UIManager.put("swing.boldMetal", Boolean.FALSE); 
-                createAndShowGUI();
-            }
+    // Display the window.
+    frame.pack();
+    frame.setVisible(true);
+  }
+
+  public void fileBrowser() {
+    // Schedule a job for the event dispatch thread:
+    // creating and showing this application's GUI.
+    SwingUtilities.invokeLater(
+        new Runnable() {
+          public void run() {
+            // Turn off metal's use of bold fonts
+            UIManager.put("swing.boldMetal", Boolean.FALSE);
+            createAndShowGUI();
+          }
         });
-    }
+  }
 }

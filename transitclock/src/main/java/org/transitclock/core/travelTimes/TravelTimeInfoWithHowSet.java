@@ -1,6 +1,6 @@
 /*
  * This file is part of Transitime.org
- * 
+ *
  * Transitime.org is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License (GPL) as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,50 +18,54 @@
 package org.transitclock.core.travelTimes;
 
 import java.util.List;
-
-import org.transitclock.db.structs.Trip;
 import org.transitclock.db.structs.TravelTimesForStopPath.HowSet;
+import org.transitclock.db.structs.Trip;
 
 /**
- * Extends TravelTimeInfo class but adds how the travel time was set.
- * This way can see if travel time set via AVL data directly, is for
- * a different trip, or is for a different service class, etc.
+ * Extends TravelTimeInfo class but adds how the travel time was set. This way can see if travel
+ * time set via AVL data directly, is for a different trip, or is for a different service class,
+ * etc.
  *
  * @author SkiBu Smith
- *
  */
 public class TravelTimeInfoWithHowSet extends TravelTimeInfo {
 
-	private final HowSet howSet;
-	
-	/********************** Member Functions **************************/
+  private final HowSet howSet;
 
-	/**
-	 * Simple constructor.
-	 * 
-	 * @param trip
-	 * @param stopPathIndex
-	 * @param stopTime
-	 * @param travelTimes
-	 * @param travelTimeSegLength
-	 * @param howSet
-	 */
-	public TravelTimeInfoWithHowSet(Trip trip, int stopPathIndex, int stopTime,
-			List<Integer> travelTimes, double travelTimeSegLength, HowSet howSet) {
-		super(trip, stopPathIndex, stopTime, travelTimes, travelTimeSegLength);
-		this.howSet = howSet;
-	}
-	
-	public TravelTimeInfoWithHowSet(TravelTimeInfo travelTimeInfo, HowSet howSet) {
-		super(travelTimeInfo);
-		this.howSet = howSet;
-	}
-	
-	/**
-	 * Returns how the travel time info was obtained
-	 * @return
-	 */
-	public HowSet howSet() {
-		return howSet;
-	}
+  /********************** Member Functions **************************/
+
+  /**
+   * Simple constructor.
+   *
+   * @param trip
+   * @param stopPathIndex
+   * @param stopTime
+   * @param travelTimes
+   * @param travelTimeSegLength
+   * @param howSet
+   */
+  public TravelTimeInfoWithHowSet(
+      Trip trip,
+      int stopPathIndex,
+      int stopTime,
+      List<Integer> travelTimes,
+      double travelTimeSegLength,
+      HowSet howSet) {
+    super(trip, stopPathIndex, stopTime, travelTimes, travelTimeSegLength);
+    this.howSet = howSet;
+  }
+
+  public TravelTimeInfoWithHowSet(TravelTimeInfo travelTimeInfo, HowSet howSet) {
+    super(travelTimeInfo);
+    this.howSet = howSet;
+  }
+
+  /**
+   * Returns how the travel time info was obtained
+   *
+   * @return
+   */
+  public HowSet howSet() {
+    return howSet;
+  }
 }
