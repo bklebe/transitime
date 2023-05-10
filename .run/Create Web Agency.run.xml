@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Create Web Agency" type="JarApplication">
+    <option name="JAR_PATH" value="$PROJECT_DIR$/transitclock/target/CreateWebAgency.jar" />
+    <option name="VM_PARAMETERS" value="-Dtransitclock.hibernate.configFile=src/main/resources/hibernate.cfg.xml" />
+    <option name="PROGRAM_PARAMETERS" value="&quot;1&quot; &quot;mbta.com&quot; &quot;bklebe&quot; &quot;postgresql&quot; &quot;localhost&quot; &quot;bklebe&quot; &quot;&quot;" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/transitclock" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2" />
+  </configuration>
+</component>
