@@ -40,6 +40,14 @@
       </modules>
     </profile>
   </profiles>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-wrapper-plugin</artifactId>
+      <version>3.2.0</version>
+      <type>maven-plugin</type>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
