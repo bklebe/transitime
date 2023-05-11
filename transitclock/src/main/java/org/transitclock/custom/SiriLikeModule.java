@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,7 +15,6 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.transitclock.avl.AvlClient;
@@ -32,11 +30,12 @@ import org.w3c.dom.NodeList;
 
 public class SiriLikeModule extends Module {
 
-  private static final Logger logger = 
-      LoggerFactory.getLogger(AvlSqsClientModule.class);
-  
-  private static SimpleDateFormat ISO_DATE_SHORT_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-  private static SimpleDateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX");
+  private static final Logger logger = LoggerFactory.getLogger(AvlSqsClientModule.class);
+
+  private static SimpleDateFormat ISO_DATE_SHORT_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+  private static SimpleDateFormat ISO_DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX");
 
   public List<String> _routeList = new ArrayList<String>();
   private final BoundedExecutor _avlClientExecutor;
@@ -52,44 +51,42 @@ public class SiriLikeModule extends Module {
   private DocumentBuilder builder;
   private String _apiKey;
   private String _baseUrl;
-  
+
   public SiriLikeModule(String agencyId) {
     super(agencyId);
     // todo move this to config
     addRoutes();
-    
+
     _baseUrl = "http://api.rideuta.com/SIRI/SIRI.svc/VehicleMonitor/ByRoute";
     _apiKey = "UPBML0P0ZO0";
-    
+
     ISO_DATE_FORMAT.setLenient(false);
     ISO_DATE_SHORT_FORMAT.setLenient(false);
     factory = DocumentBuilderFactory.newInstance();
     try {
       builder = factory.newDocumentBuilder();
-    
-    XPathFactory xPathfactory = XPathFactory.newInstance();
-    XPath xpath = xPathfactory.newXPath();
-    mvjExpression = xpath.compile("/Siri/VehicleMonitoringDelivery/VehicleActivity/MonitoredVehicleJourney");
-    recordedAtExpression = xpath.compile("/Siri/VehicleMonitoringDelivery/VehicleActivity/RecordedAtTime/text()");
-    tripIdExpression = xpath.compile("FramedVehicleJourneyRef/DatedVehicleJourneyRef/text()");
-    vehicleIdExpression = xpath.compile("VehicleRef/text()");
-    latExpression = xpath.compile("VehicleLocation/Latitude/text()");
-    lonExpression = xpath.compile("VehicleLocation/Longitude/text()");
-    speedExpression = xpath.compile("Extensions/Speed/text()");
-    bearingExpression = xpath.compile("Extensions/Bearing/text()");
+
+      XPathFactory xPathfactory = XPathFactory.newInstance();
+      XPath xpath = xPathfactory.newXPath();
+      mvjExpression =
+          xpath.compile("/Siri/VehicleMonitoringDelivery/VehicleActivity/MonitoredVehicleJourney");
+      recordedAtExpression =
+          xpath.compile("/Siri/VehicleMonitoringDelivery/VehicleActivity/RecordedAtTime/text()");
+      tripIdExpression = xpath.compile("FramedVehicleJourneyRef/DatedVehicleJourneyRef/text()");
+      vehicleIdExpression = xpath.compile("VehicleRef/text()");
+      latExpression = xpath.compile("VehicleLocation/Latitude/text()");
+      lonExpression = xpath.compile("VehicleLocation/Longitude/text()");
+      speedExpression = xpath.compile("Extensions/Speed/text()");
+      bearingExpression = xpath.compile("Extensions/Bearing/text()");
     } catch (ParserConfigurationException | XPathExpressionException e) {
       logger.error("invalid config:", e);
     }
-    
+
     // Create the executor that actually processes the AVL data
-    NamedThreadFactory avlClientThreadFactory = new NamedThreadFactory(
-        "avlClient");
-    Executor executor = Executors.newFixedThreadPool(1,
-        avlClientThreadFactory);
+    NamedThreadFactory avlClientThreadFactory = new NamedThreadFactory("avlClient");
+    Executor executor = Executors.newFixedThreadPool(1, avlClientThreadFactory);
     _avlClientExecutor = new BoundedExecutor(executor, 100);
   }
-
-
 
   public String getApiKey() {
     return _apiKey;
@@ -121,7 +118,8 @@ public class SiriLikeModule extends Module {
 
   private void refresh() throws Exception {
     for (String route : getRoutes()) {
-      NodesAndTimestamp nodesAndTimestamp = parseVehicles(new URL(constructUrl(route, getApiKey(), getUrl())));
+      NodesAndTimestamp nodesAndTimestamp =
+          parseVehicles(new URL(constructUrl(route, getApiKey(), getUrl())));
       for (Node n : nodesAndTimestamp.getNodes()) {
         AvlReport avl = parse(n, nodesAndTimestamp.getTimestamp());
         if (avl != null) {
@@ -132,14 +130,13 @@ public class SiriLikeModule extends Module {
     }
   }
 
-  
   private AvlReport parse(Node node, long timestamp) throws Exception {
     String tripId = (String) tripIdExpression.evaluate(node, XPathConstants.STRING);
     if (tripId == null) {
       logger.error("no trip for node=" + node);
       return null;
     }
-    String vehicleId = (String)vehicleIdExpression.evaluate(node, XPathConstants.STRING);
+    String vehicleId = (String) vehicleIdExpression.evaluate(node, XPathConstants.STRING);
     double lat = asDouble(latExpression.evaluate(node, XPathConstants.STRING));
     double lon = asDouble(lonExpression.evaluate(node, XPathConstants.STRING));
     float speed = asFloat(speedExpression.evaluate(node, XPathConstants.STRING));
@@ -151,30 +148,33 @@ public class SiriLikeModule extends Module {
   private NodesAndTimestamp parseVehicles(URL url) throws Exception {
     List<Node> vehicles = new ArrayList<Node>();
     Document doc = builder.parse(url.toString());
-    String recordedAtStr = (String)recordedAtExpression.evaluate(doc, XPathConstants.STRING);
+    String recordedAtStr = (String) recordedAtExpression.evaluate(doc, XPathConstants.STRING);
     long timestamp = parseDate(recordedAtStr).getTime();
     NodeList nl = (NodeList) this.mvjExpression.evaluate(doc, XPathConstants.NODESET);
-    if (nl ==null || nl.getLength() == 0) {
+    if (nl == null || nl.getLength() == 0) {
       logger.error("no nodes found");
       return new NodesAndTimestamp(vehicles, timestamp);
     }
-    
+
     for (int i = 0; i < nl.getLength(); i++) {
       vehicles.add(nl.item(i));
     }
     return new NodesAndTimestamp(vehicles, timestamp);
   }
 
-  private AvlReport toAvlReport(String vehicleId,
-                                long timestamp,
-                                double lat, double lon,
-                                float speed,
-                                float bearing,
-                                String tripId) {
+  private AvlReport toAvlReport(
+      String vehicleId,
+      long timestamp,
+      double lat,
+      double lon,
+      float speed,
+      float bearing,
+      String tripId) {
     AvlReport a = new AvlReport(vehicleId, timestamp, lat, lon, speed, bearing, "UTASIRI");
     a.setAssignment(tripId, AssignmentType.TRIP_ID);
     return a;
   }
+
   private String constructUrl(String route, String apiKey, String url) {
     return url + "?route=" + route + "&usertoken=" + apiKey;
   }
@@ -186,8 +186,8 @@ public class SiriLikeModule extends Module {
   public Date parseDate(String s) throws Exception {
     int endPos = "yyyy-MM-ddTHH:mm:ss.SSS".length();
     // we can't convince Java's Simple Date to parse millisecond to 7 digit precision
-    s = s.substring(0, endPos-1) + s.substring((s.length() - 7), s.length());
-    
+    s = s.substring(0, endPos - 1) + s.substring((s.length() - 7), s.length());
+
     return ISO_DATE_FORMAT.parse(s);
   }
 
@@ -204,17 +204,21 @@ public class SiriLikeModule extends Module {
   public static class NodesAndTimestamp {
     private List<Node> _nodes;
     private long _timestamp;
+
     public NodesAndTimestamp(List<Node> nodes, long timestamp) {
       this._nodes = nodes;
       this._timestamp = timestamp;
     }
+
     public List<Node> getNodes() {
       return _nodes;
     }
+
     public long getTimestamp() {
       return _timestamp;
     }
   }
+
   private void addRoutes() {
     _routeList.add("2X");
     _routeList.add("2");
@@ -347,7 +351,7 @@ public class SiriLikeModule extends Module {
     _routeList.add("217");
     _routeList.add("213");
     _routeList.add("200");
-    
+
     _routeList.add("17");
     _routeList.add("11");
     _routeList.add("21");
@@ -473,6 +477,5 @@ public class SiriLikeModule extends Module {
     _routeList.add("F547");
     _routeList.add("F546");
     _routeList.add("F534");
-
   }
 }

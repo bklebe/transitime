@@ -1,6 +1,6 @@
 There are several main classes which are used in the set up of the system. These can be run directly by specifying the class to run or by using the executable jar in the target directory.
 
-The steps to set up the system are 
+The steps to set up the system are
 <ul>
 	<li>Create Database. For this step you are on your own and you should find instructions on the related database providers web sites.
 	</li>
@@ -10,7 +10,7 @@ The steps to set up the system are
 	</li>
 	<li>Import GTFS static data using
 		processGTFSFile.jar
-	</li>		
+	</li>
 	<li>Get access to a source of realtime GPS data.</li>
 	<li>Create transiTime module to read realtime GPS data or create a converter to convert the realtime datasource to a GTFS-RT vechicle location source.</li>
 	<li>Config and run core module</li>
@@ -19,7 +19,7 @@ The steps to set up the system are
 	<li>Setup transitime api webapp. Instructions to be added to README.MD in transitimeApi.</li>
 	<li>Setup transitime webapp. Instructions to be added to README.MD in transitimeWebapp.</li>
 </ul>
-	
+
 
 generateDatabaseSchema.jar -- Main class: org.transitclock.applications.SchemaGenerator
 =================================
@@ -31,18 +31,18 @@ The jar generateDatabaseSchema.jar can be used to re-generate the SQL required t
 
 
 ```
-usage: 
+usage:
 	java -jar generateDatabaseSchema.jar<br/>
  		-o,--outputDirectory <arg>        This is the directory to output the sql<br/>
  		-p,--hibernatePackagePath <arg>   This is the path to the package
                 		                  containing the hibernate annotated java<br/>
                                 		  classes<br/>
-```                                		  
-                                   
+```
+
 
 ```
 example:
-	java -jar generateDatabaseSchema.jar -o c:\temp\ -p org.transitclock.db.structs	
+	java -jar generateDatabaseSchema.jar -o c:\temp\ -p org.transitclock.db.structs
 ```
 To create all tables require you to support the core and the webapp you could run
 
@@ -52,7 +52,7 @@ To create all tables require you to support the core and the webapp you could ru
 ```
 
 Once these commands have been run you should run the sql created in the files in the core and web directory in your database.
-	
+
 ISSUE: This works in eclipse by executing the class but not on command line using the executable jar. It is an issue with the ClassLoader and onejar. Maybe better to create using mvn exec plugin.
 
 The following will can be run from the transitime directory under core and will place the required SQL in the target directory.
@@ -62,7 +62,7 @@ mvn exec:java -Dexec.mainClass="org.transitclock.applications.SchemaGenerator" -
 ````
 
 processGTFSFile.jar -- Main class: org.transitclock.applications.GTFSFileProcessor
-=================================    
+=================================
 This class the usage can be got from specifying the -h option on its own.
 
 ```

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Create Schema" type="CompoundRunConfigurationType">
+    <toRun name="Create Core Schema" type="ShConfigurationType" />
+    <toRun name="Create Web Schema" type="ShConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Create API Key" type="JarApplication">
+    <option name="JAR_PATH" value="$PROJECT_DIR$/transitclock/target/CreateAPIKey.jar" />
+    <option name="VM_PARAMETERS" value="-Dtransitclock.hibernate.configFile=transitclock/src/main/resources/postgres_hibernate.cfg.xml" />
+    <option name="PROGRAM_PARAMETERS" value="-c transitclock/src/main/resources/transiTimeconfig.xml -d &quot;my key&quot; -e &quot;foo@example.com&quot; -n &quot;test&quot; -p &quot;1234567890&quot; -u &quot;example.com&quot;" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -2,10 +2,7 @@ package org.transitclock.config;
 
 import java.util.List;
 
-/**
- * For injecting a class dependency via an input configuration parameter. 
- *
- */
+/** For injecting a class dependency via an input configuration parameter. */
 public class ClassConfigValue extends ConfigValue<Class> {
 
   public ClassConfigValue(String id, Class defaultValue, String description) {
@@ -22,5 +19,4 @@ public class ClassConfigValue extends ConfigValue<Class> {
     }
     return null;
   }
- 
 }

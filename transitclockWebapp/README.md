@@ -1,4 +1,4 @@
-This is the web application for TheTransitClock and can be built by 
+This is the web application for TheTransitClock and can be built by
 
 ```
 cd transitclockWebapp

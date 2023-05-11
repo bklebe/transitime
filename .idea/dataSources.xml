@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hsql_hibernate.cfg.xml/Hibernate" uuid="26964476-10a1-49a6-865f-ea197839de97">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclockQuickStart/src/test/resources/hsql_hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem://localhost/xdb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="a4054a8f-f39e-47d8-bbb2-ac9d6e7a781d">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclockQuickStart/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost/test</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="hsql_hibernate.cfg.xml/Hibernate" uuid="3d348881-65bc-459b-887c-0a2bf6f88ee7">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclock/src/main/resources/hsql_hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost/test</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="transitclockIntegration:src:main:resources:hsql_integration_test_hibernate.cfg.xml/Hibernate" uuid="021f5496-0b5f-4a5d-8391-b4d0eb4aad96">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclockIntegration/src/main/resources/hsql_integration_test_hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem://localhost/xdb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="hsql_hibernate.cfg.xml/Hibernate" uuid="7745d808-5994-4992-822e-fee223572e49">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclock/src/test/resources/hsql_hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:mem://localhost/xdb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="hsql_integration_test_hibernate.cfg.xml/Hibernate" uuid="4b372b5e-c86d-4f84-9a2a-487f5460d9b2">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate /Users/ada/Projects/transitime/transitclock/src/test/resources/hsql_integration_test_hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost/transitime_test</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
