@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transitclock>
+  <modules>
+    <optionalModulesList>org.transitclock.avl.GtfsRealtimeModule</optionalModulesList>
+  </modules>
+  <autoBlockAssigner>
+    <autoAssignerEnabled>true</autoAssignerEnabled>
+  </autoBlockAssigner>
+  <core>
+    <agencyId>1</agencyId>
+  </core>
+  <avl>
+    <gtfsRealtimeFeedURI>https://cdn.mbta.com/realtime/VehiclePositions.pb</gtfsRealtimeFeedURI>
+    <url>https://cdn.mbta.com/realtime/VehiclePositions.pb</url>
+    <!-- URL for GTFS realtime vechicle location stream -->
+    <!--  commented out for now for ease of use -->
+    <!--      <minLatitude>30.145125</minLatitude>
+             <maxLatitude>30.517681</maxLatitude>
+
+             <minLongitude>-98.072043</minLongitude>
+             <maxLongitude>-97.495917</maxLongitude>   -->
+  </avl>
+  <db>
+    <dbName>bklebe</dbName>
+    <dbHost>localhost:5432</dbHost>
+    <dbType>postgresql</dbType>
+    <dbUserName/>
+    <dbPassword/>
+  </db>
+  <hibernate>
+    <configFile>postgres_hibernate.cfg.xml</configFile>
+  </hibernate>
+  <logging>
+    <dir>../log</dir>
+  </logging>
+</transitclock>
