@@ -70,7 +70,7 @@
               <goal>xml-format</goal>
             </goals>
             <configuration>
-              <excludes>.run/</excludes>
+              <excludes>.run/,.idea/</excludes>
               <indentSize>2</indentSize>
             </configuration>
           </execution>
