@@ -1,4 +1,4 @@
-core [![Build Status](https://travis-ci.org/TheTransitClock/transitime.svg?branch=develop)](https://travis-ci.org/TheTransitClock/transitime)
+core [![CI](https://github.com/bklebe/transitime/actions/workflows/maven.yml/badge.svg)](https://github.com/bklebe/transitime/actions/workflows/maven.yml)
 ====
 
 The complete core Java software for the Transitime real-time transit information project. The goal is to use any type of real-time GPS data to generate useful public transportation information. The system is for both letting passengers know the status of their vehicles and helping agencies more effectively manage their systems. By providing a complete open-source system, agencies can have a cost effective system and have full ownership of it.
@@ -28,5 +28,3 @@ Once this is set up the next step is to set up the transitimeApi which is a REST
 The transitimeWebapp in turn is a web application which uses the transitTimeAPI to provided a user interface. This is a war file which can be deployed into Tomcat. This connects to the database and the connection information is configured in hibernate.cfg.xml in the src/main/resources directory. Currently this needs to be deployed on the same server as the API.
 
 The transitimeQuickStart can be built with mvn install and ran using java -jar transitimeQuickStart it is currently a work in progress but the gui elements can be seen.
-
-[![Build Status](https://zenodo.org/badge/DOI/10.5281/zenodo.3550975.svg)](https://zenodo.org/record/3550975#.XdgmVedKjOQ)
