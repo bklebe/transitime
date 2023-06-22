@@ -168,7 +168,7 @@
     <dependency>
       <groupId>org.hornetq</groupId>
       <artifactId>hornetq-jms-client</artifactId>
-      <version>2.3.25.Final</version>
+      <version>2.4.9.Final</version>
     </dependency>
     <!-- For Amigocloud web sockets AVL feed -->
     <dependency>
