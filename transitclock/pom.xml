@@ -245,7 +245,7 @@
     <dependency>
       <groupId>com.esotericsoftware</groupId>
       <artifactId>kryo</artifactId>
-      <version>4.0.0</version>
+      <version>5.5.0</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-jcs-core -->
     <dependency>
