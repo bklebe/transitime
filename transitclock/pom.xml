@@ -12,7 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javax.activation.version>1.2.0</javax.activation.version>
     <jaxb.api.version>3.0.2</jaxb.api.version>
-    <lombok.version>1.18.24</lombok.version>
+    <lombok.version>1.18.26</lombok.version>
     <hibernate.version>5.4..Final</hibernate.version>
     <hibernate.validator.version>6.0.21.Final</hibernate.validator.version>
     <hibernate.validator.version>6.0.21.Final</hibernate.validator.version>
