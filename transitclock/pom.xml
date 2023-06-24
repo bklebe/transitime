@@ -95,7 +95,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.5.7.Final</version>
+      <version>5.6.15.Final</version>
     </dependency>
     <!-- hibernate-core loads in really old version of xml-apis so load in 
 			newer version explicitly. Otherwise get problems with the Node class. -->
