@@ -30,7 +30,7 @@
     </profile>
   </profiles>
   <properties>
-    <jettyVersion>9.4.15.v20190215</jettyVersion>
+    <jettyVersion>9.4.51.v20230217</jettyVersion>
   </properties>
   <dependencies>
     <dependency>
